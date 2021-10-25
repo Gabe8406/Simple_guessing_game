@@ -1,0 +1,36 @@
+import random
+welcome_text = """"
+ _    _      _                          _ 
+| |  | |    | |                        | |
+| |  | | ___| | ___ ___  _ __ ___   ___| |
+| |/\| |/ _ \ |/ __/ _ \| '_ ` _ \ / _ \ |
+\  /\  /  __/ | (_| (_) | | | | | |  __/_|
+ \/  \/ \___|_|\___\___/|_| |_| |_|\___(_)
+"""
+print(welcome_text + "Welcome to the Number Guessing Game!\n" +
+"I'm thinking of a number between 1 and 100.\n")
+r_number = random.randint(1, 100)
+def game():
+    difficulty =  input("Choose a difficulty. Type 'easy' or hard':\n")
+    if difficulty == "easy":
+        attempts = 10
+    elif difficulty == "hard":
+        attempts = 5
+    g_number = int(input(f"You have {attempts} attempts remaining to guess the number.\n Make a guess:\n"))
+    while g_number != r_number:
+        if attempts > 0:
+            if g_number < r_number:
+                attempts -= 1
+                g_number =  int(input(f"Too low.\n Guess again.\n You have {attempts} attempts remaining to guess the number.\n Make a guess:\n"))
+            elif g_number > r_number:
+                attempts -= 1
+                g_number = int(input(f"Too high.\n Guess again.\n You have {attempts} attempts remaining to guess the number.\n Make a guess:\n"))
+        elif attempts == 0:
+            print(f"You run out of guesses.\n You lose.\n The answer was {r_number}.")
+    else:
+        print(f"You got it. The answer is {r_number}.")
+game()
+
+
+
+
